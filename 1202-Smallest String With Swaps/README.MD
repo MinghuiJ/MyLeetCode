@@ -68,7 +68,7 @@ Return the lexicographically smallest string that s can be changed to after usin
             list_idx = sorted(list(idx))
             list_char = sorted([s[p] for p in list_idx])
             for i in range(len(list_idx)):
-                position[list_idx[i]]=list_char[i]
+                position[list_idx[i]] = list_char[i]
             
         def dfs(self, node, idx, graph):
             idx.add(node)
