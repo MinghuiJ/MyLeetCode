@@ -37,21 +37,21 @@ The order of output does not matter.
 
 * 后来想到使用一个数字来代表p中每个字符，然后计算字符串的总和，这样只要比较和就可以，不需要排序，但是自己没有想到用哪些数字代表一个字符才能使得不同的和代表不同的字符串。看到讨论区，发现想法想到了，就是没有想到实现的方法，原来用hash就行
 
-```python
-class Solution:
-    def findAnagrams(self, s: str, p: str) -> List[int]:
-        s_len, p_len = len(s), len(p)
-        s_hash, p_hash = 0, 0
-        ret = []
-        if p_len > s_len:
-            return []
-        for i in range(p_len):
-            s_hash, p_hash = s_hash + hash(s[i]), p_hash + hash(p[i])
-        if s_hash == p_hash:
-            ret.append(0)
-        for i in range(p_len, s_len):
-            s_hash += hash(s[i]) - hash(s[i-p_len])
+    ```python
+    class Solution:
+        def findAnagrams(self, s: str, p: str) -> List[int]:
+            s_len, p_len = len(s), len(p)
+            s_hash, p_hash = 0, 0
+            ret = []
+            if p_len > s_len:
+                return []
+            for i in range(p_len):
+                s_hash, p_hash = s_hash + hash(s[i]), p_hash + hash(p[i])
             if s_hash == p_hash:
-                ret.append(i - p_len + 1)
-        return ret
-```
+                ret.append(0)
+            for i in range(p_len, s_len):
+                s_hash += hash(s[i]) - hash(s[i-p_len])
+                if s_hash == p_hash:
+                    ret.append(i - p_len + 1)
+            return ret
+    ```
