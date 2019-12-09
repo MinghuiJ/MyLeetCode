@@ -6,6 +6,7 @@ The robot can only move either down or right at any point in time. The robot is 
 Now consider if some obstacles are added to the grids. How many unique paths would there be?
 
 ![avatar](robot_maze.png)
+
 <font size="2">An obstacle and empty space is marked as `1` and `0` respectively in the grid.</font>
 
 **Note:** *m* and *n* will be at most 100.
