@@ -27,19 +27,19 @@ Could you solve it in linear time?
 * 第一想法是用优先队列，但每次滑动的时候需要维护一个最大堆，总体复杂度为`O(nlogn)`，不是线性时间复杂度
 * 考虑双向队列（存放元素的索引），每当有滑动到下一个位置，查看新的元素是否大于等于队列头索引对应的元素，如果是，则将队列所有东西全部`pop`并将其索引加入队列，否则直接加入到列尾。这样队列的头部始终是当前窗口中最大元素的索引，将其加入结果`list`中即可
 
-```python
-class Solution:
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        if len(nums)<k or k<=0:
-            return []
-        window_index, res = [], []
-        for i in range(len(nums)):
-            if i>=k and window_index[0] <= i - k:
-                window_index.pop(0)
-            while window_index and nums[window_index[-1]] <= nums[i]:
-                window_index.pop()
-            window_index.append(i)
-            if i>=k-1:
-                res.append(nums[window_index[0]])
-        return res
-```
+    ```python
+    class Solution:
+        def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+            if len(nums)<k or k<=0:
+                return []
+            window_index, res = [], []
+            for i in range(len(nums)):
+                if i>=k and window_index[0] <= i - k:
+                    window_index.pop(0)
+                while window_index and nums[window_index[-1]] <= nums[i]:
+                    window_index.pop()
+                window_index.append(i)
+                if i>=k-1:
+                    res.append(nums[window_index[0]])
+            return res
+    ```
